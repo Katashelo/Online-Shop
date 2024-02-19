@@ -1,0 +1,33 @@
+.img {
+  width: 150px;
+  height: 150px;
+}
+
+.img_icon {
+  width: 20px;
+  height: 15px;
+}
+.border_block {
+  border: thick double #201414;
+  margin: 25px;
+  background-color: beige;
+}
+.body_block {
+  display: flex;
+  margin: 25px;
+  
+}
+.body_block_item {
+  
+}
+
+.buttons_block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  cursor: pointer;
+  border: solid;
+  padding: 1px;
+}

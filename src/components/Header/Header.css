@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+   
+    background-color: bisque;
+}
+
+.navigate {
+    display: flex;
+    flex-flow: row nowrap;
+    text-decoration: none;
+}
+
+.main {
+    position: absolute;
+
+
+    right: 0;
+}
+
+/*.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 3.125rem 1.25rem;
+} */
+
+.modal-show-button {
+    width: 110px;
+    border-radius: 0.4375rem;
+    background-color: #1851e0;
+    color: #ffffff;
+}
+
+h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.3;
+}

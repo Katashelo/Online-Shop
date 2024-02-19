@@ -1,0 +1,4 @@
+.busket_block {
+    display: flex;
+    flex-wrap: wrap;
+}

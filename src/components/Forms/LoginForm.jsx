@@ -1,41 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import "./LoginForm.css"
+import useFetchItems from "../../API/useFetchItems";
 
 
 
 const LoginForm = ({ isOpen, onClose }) => {
-    const { register } = useForm();
-    // const [value, setValue] = useState('')
-    const [api, setApi] = useState('')
+    const { register, getValues } = useForm();
 
-    // const handleLogin = () => {
-    //       setApi({
-    //         email: []
-    //       })
-    // }
-    console.log(api, '1')
+const { item, error, isLoaded } = useFetchItems('https://nestjs-boilerplate-test.herokuapp.com/api/v1/auth/email/login')
+
     return (
         <div className="container">
             <form>
                 <h4> Log-in </h4>
                 <div>
                     <input
-                        {...register("email", { onChange: (e) => setApi(e) })}
+                        {...register("email")}
                         name="email"
                         placeholder="Email"
-
                     />
                 </div>
                 <div>
-                    <input  {...register("message", { required: "Required", })}
+                    <input  {...register("password")}
                         name="password"
                         placeholder="Password"
                         type="text"
-                        onChange={e => setApi(e.target.api.password)}
                     />
                 </div>
-                <button onClick={() => console.log(api, '2')} type="submit" >Login</button>
+                <button onClick={() => {
+                    console.log(getValues())
+                }}
+                    type="button" >Login</button>
 
             </form>
 

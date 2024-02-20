@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./LoginForm.css"
 import useFetchItems from "../../API/useFetchItems";
@@ -7,9 +7,9 @@ import useFetchItems from "../../API/useFetchItems";
 
 const LoginForm = ({ isOpen, onClose }) => {
     const { register, getValues } = useForm();
-
-const { item, error, isLoaded } = useFetchItems('https://nestjs-boilerplate-test.herokuapp.com/api/v1/auth/email/login')
-
+    const [params, setParams] = useState({login:'', password:''})
+    const { item, error, isLoaded } = useFetchItems('https://nestjs-boilerplate-test.herokuapp.com/api/v1/auth/email/login', params)
+    console.log(params, 'params')
     return (
         <div className="container">
             <form>
@@ -29,7 +29,7 @@ const { item, error, isLoaded } = useFetchItems('https://nestjs-boilerplate-test
                     />
                 </div>
                 <button onClick={() => {
-                    console.log(getValues())
+                    setParams({login: getValues('email'), password: getValues('password')})
                 }}
                     type="button" >Login</button>
 

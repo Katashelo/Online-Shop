@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
-const useFetchItems = (url) => {
+const useFetchItems = (url, params) => {
     const [item, setItem] = useState()
     const [isLoaded, setIsLoaded] = useState(false)
     const [error, setError] = useState(null)
 
+
+      const query = useMemo(() => Object.keys(params)
+             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+             .join('&'), [params]);
+
     useEffect(() => {
-        fetch(url)
+        fetch(url + query)
             .then(res => res.json())
             .then(
                 (results) => {
@@ -27,5 +32,4 @@ const useFetchItems = (url) => {
 
     return { error, isLoaded, item }
 }
-
 export default useFetchItems;

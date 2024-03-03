@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomePage.css"
 import useFetchItems from "../../API/useFetchItems";
 import NavigationPanel from "../NavigatePanel/NavigationPanel";
 import BlockItems from "../BlockItems/BlockItems";
 import { addItemToBusket, addItemToMyFavorite } from "../../store/actions";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = ({searchUrl, handleAddFavorite, handleAddToBusket }) => {
 
     const url = 'https://fakestoreapi.com/products?limit=8'
-    const { item, error, isLoaded } = useFetchItems(url)
+    const [ test, setTest] = useState(url)
+    const { item, error, isLoaded } = useFetchItems(test)
 
-    console.log(item)
-    const dispatch = useDispatch()
-    const handleAddFavorite = (item) => {
-        dispatch(addItemToMyFavorite(item))
-    }
-    const handleAddToBusket = (item) => {
-        dispatch(addItemToBusket(item))
-    }
+    console.log(test)
+    // const dispatch = useDispatch()
+    // const handleAddFavorite = (item) => {
+    //     dispatch(addItemToMyFavorite(item))
+    // }
+    // const handleAddToBusket = (item) => {
+    //     dispatch(addItemToBusket(item))
+    // }
 
     if (error) {
         return <div>Помилка: {error.message}</div>;
@@ -34,8 +36,11 @@ const HomePage = () => {
         console.log(itemy)
         return (
             <div  >
-                <NavigationPanel />
+                <NavigationPanel  searchUrl={searchUrl} />
                 <div className="home_block" >
+                    {/* <Link to={'/'} onClick={ () => handleTest() } >test 1</Link>
+                    <button onClick={ () => setTest('https://fakestoreapi.com/products/category/electronics') } >test 2</button>
+                    <button>test 3</button> */}
                 {itemy.map((item) => (
                     <div key={item.id} >
                         <BlockItems items={item} addFavorite={handleAddFavorite} addBusket={handleAddToBusket}/>

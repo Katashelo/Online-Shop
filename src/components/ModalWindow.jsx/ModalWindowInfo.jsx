@@ -9,7 +9,7 @@ const ModalWindowInfo = ({ isOpen, onClose, items }) => {
     };
     return (
         <>
-            <Transition in={isOpen} timeout={350} unmountOnExit={true}>
+            <Transition animation={false} in={isOpen} timeout={350} unmountOnExit={true}>
                 {(state) => (
                     <div className={`modal modal--${state}`}>
                         <div className="modal-wrapper" onClick={onWrapperClick}>

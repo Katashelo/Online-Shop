@@ -27,12 +27,12 @@ const BlockItems = ({ items,
     }
 
     return (<div className="border_block" >
-        <div onClick={ () => setModalInfoOpen(true) } className="body_block" >
+        <div  className="body_block" >
 
 
             <div key={items.id} className="body_block_item">
 
-                <img src={items.image} className="img" alt="alt" />
+                <img onClick={ () => setModalInfoOpen(true) } src={items.image} className="img" alt="alt" />
                 <div >
                     {items.price}$ </div>
                 <div className="buttons_block" >

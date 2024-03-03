@@ -1,8 +1,18 @@
 import React, { useState } from "react";
+import useFetchItems from "../../API/useFetchItems";
+import { Link } from "react-router-dom";
 
-const NavigationPanel = () => {
+const NavigationPanel = ({searchUrl}) => {
     const [isOpen, setOpen] = useState(false);
     const [isOpenSort, setOpenSort] = useState(false);
+    const [categorie, setCategorie] = useState('')
+  
+    // const { item, error, isLoaded } = useFetchItems(categorie)
+
+    // const handleTrainers = () => {
+    //     setCategorie('https://fakestoreapi.com/products/category/jewelery')
+    // }
+
     return (
         <div className="wrapper" >
             <input className="search" placeholder="Search products for name" ></input>
@@ -13,13 +23,19 @@ const NavigationPanel = () => {
                 <nav className={`menu ${isOpen ? "active" : ""}`} >
                     <ul className="menu__list" >
                         <li className="menu__item" >
-                            <span> Trainners </span>
+                            <Link to={'/Categories'} style={{textDecoration: 'none', color: 'grey'}} > 
+                          <div onClick={() => searchUrl('jewelery')} > Jewelery  </div>  
+                            </Link>
                         </li>
                         <li className="menu__item" >
-                            <span> Classic Shoes </span>
+                        <Link to={'/Categories'} style={{textDecoration: 'none', color: 'grey'}} > 
+                          <div onClick={() => searchUrl(`men's clothing`)} > Men Clothes  </div>  
+                            </Link>
                         </li>
                         <li className="menu__item" >
-                            <span> Sandals </span>
+                        <Link to={'/Categories'} style={{textDecoration: 'none', color: 'grey'}} > 
+                          <div onClick={() => searchUrl(`women's clothing`)} > Women Clothes  </div>  
+                            </Link>
                         </li>
 
                     </ul>

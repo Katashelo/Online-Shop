@@ -6,9 +6,23 @@ import useFetchItems from "../../API/useFetchItems";
 
 
 const LoginForm = ({ isOpen, onClose }) => {
+
+const LoginOn = ({login, password}) => {
+   
+    fetch('https://fakestoreapi.com/auth/login',{
+            method:'POST',
+            body:JSON.stringify({
+                username: "mor_2314",
+                password: "83r5^_"
+            })
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json, 'testun'))
+}
+
     const { register, getValues } = useForm();
     const [params, setParams] = useState({login:'', password:''})
-    const { item, error, isLoaded } = useFetchItems('https://nestjs-boilerplate-test.herokuapp.com/api/v1/auth/email/login', params)
+    // const { item, error, isLoaded } = useFetchItems('https://fakestoreapi.com/auth/login', params)
     console.log(params, 'params')
     return (
         <div className="container">
@@ -29,7 +43,8 @@ const LoginForm = ({ isOpen, onClose }) => {
                     />
                 </div>
                 <button onClick={() => {
-                    setParams({login: getValues('email'), password: getValues('password')})
+                    // setParams({login: getValues('email'), password: getValues('password')})
+                    LoginOn({login: getValues('email'), password: getValues('password')})
                 }}
                     type="button" >Login</button>
 
